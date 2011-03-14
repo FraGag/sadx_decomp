@@ -163,41 +163,39 @@ struct AnimFrame_VertNrm
     unsigned int NormalsCount;
 };
 
-#if 0
 struct LandTable
 {
-    WORD COLCount;
-    WORD AnimCount;
-    DWORD Unknown_0;
-    DWORD Unknown_1;
-    DWORD COL;
-    DWORD AnimData;
-    DWORD TexName;
-    DWORD TexList;
-    DWORD Unknown_4;
-    DWORD Unknown_5;
+    unsigned short int COLCount;
+    unsigned short int AnimCount;
+    unsigned int Unknown_0;
+    float Unknown_1;
+    struct COL *COL;
+    struct GeoAnimData *AnimData;
+    char *TexName;
+    struct TexListHead *TexList;
+    int Unknown_4;
+    int Unknown_5;
 };
 
 struct COL
 {
     struct Vector3 Center;
-    DWORD Radius;
-    DWORD Padding[2];
-    DWORD Object;
-    DWORD field_1C;
-    DWORD Flags;
+    float Radius;
+    int Padding[2];
+    struct OBJECT *Object;
+    int field_1C;
+    unsigned int Flags;
 };
 
 struct GeoAnimData
 {
-    DWORD field_0;
-    DWORD field_4;
-    DWORD field_8;
-    DWORD Model;
-    DWORD Animation;
-    DWORD field_14;
+    int field_0;
+    float field_4;
+    float field_8;
+    struct OBJECT *Model;
+    struct AnimHead *Animation;
+    int field_14;
 };
-#endif
 
 struct AnimHead2
 {
@@ -213,12 +211,11 @@ struct AnimHead
     struct AnimHead2 *Head2;
 };
 
-#if 0
 struct TexListEntry
 {
-    DWORD TexName;
-    DWORD Unknown;
-    DWORD RAMAddr;
+    char *TexName;
+    int Unknown;
+    void *RAMAddr;
 };
 
 struct TexListHead
@@ -226,4 +223,3 @@ struct TexListHead
     struct TexListEntry *Texlist;
     unsigned int Count;
 };
-#endif
